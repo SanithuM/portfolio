@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Mail, ArrowUpRight } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Contact = () => {
   const socialLinks = [
-    { name: 'GitHub', href: 'https://github.com/yourusername', icon: Github },
-    { name: 'LinkedIn', href: 'https://linkedin.com/in/yourusername', icon: Linkedin },
+    { name: 'GitHub', href: 'https://github.com/yourusername', icon: FaGithub },
+    { name: 'LinkedIn', href: 'https://linkedin.com/in/yourusername', icon: FaLinkedin },
     { name: 'Email', href: 'mailto:your.email@example.com', icon: Mail },
   ];
 

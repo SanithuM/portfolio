@@ -1,4 +1,7 @@
+
 @import "tailwindcss";
+
+* { box-sizing: border-box; }
 
 @theme {
     --color-brand: #000000;
@@ -9,18 +12,65 @@
 
 body {
   @apply bg-surface text-brand antialiased selection:bg-brand selection:text-surface;
+  overflow-x: hidden; /* Prevent horizontal scrolling caused by positioned blobs */
   /* Add subtle noise texture */
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
-/* Hide default cursor on desktop since we have a custom one */
-@media (min-width: 768px) {
-  * {
-    cursor: none !important;
-  }
-}
+/* Default OS cursor enabled (custom cursor removed) */
 
 /* Smooth scrolling */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
+
+/* (Removed aggressive scrollbar hiding to avoid scroll behavior issues) */
+
+/* Prevent inner elements from creating their own scrollbars — only the page should scroll */
+*:not(html):not(body) {
+  overflow: visible !important;
+}
+
+/* Gradient blob animations for subtle background accents */
+.bg-blob-animation {
+  animation: blob 12s ease-in-out infinite;
+}
+.bg-blob-animation-delayed {
+  animation: blob 14s ease-in-out 3s infinite;
+}
+
+@keyframes blob {
+  0% { transform: translateY(0) scale(1); }
+  33% { transform: translateY(-12px) scale(1.05); }
+  66% { transform: translateY(6px) scale(0.98); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Ensure gradients don't interfere with pointer events */
+.bg-blob-animation, .bg-blob-animation-delayed {
+  pointer-events: none;
+}
+
+/* Additional, slower blob animations */
+.bg-blob-animation-slow {
+  animation: blob-slow 18s ease-in-out 1s infinite;
+  pointer-events: none;
+}
+.bg-blob-animation-slower {
+  animation: blob-slower 22s ease-in-out 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes blob-slow {
+  0% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-8px) scale(1.03) translateX(-6px); }
+  50% { transform: translateY(6px) scale(0.98) translateX(4px); }
+  75% { transform: translateY(-4px) scale(1.02) translateX(-2px); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes blob-slower {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.04) translateX(8px); }
+  100% { transform: translateY(0) scale(1); }
 }

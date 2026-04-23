@@ -38,6 +38,33 @@ const About = () => {
     },
   ];
 
+  const ICON_COLORS = {
+    react: '#61DAFB',
+    vite: '#646CFF',
+    'tailwind css': '#06B6D4',
+    tailwind: '#06B6D4',
+    redux: '#764ABC',
+    'framer motion': '#0055FF',
+    'node.js': '#43853d',
+    node: '#43853d',
+    express: '#000000',
+    fastapi: '#009688',
+    mongodb: '#47A248',
+    git: '#F05032',
+    postman: '#FF6C37',
+    vercel: '#000000',
+    docker: '#2496ED',
+    postgres: '#336791',
+  };
+
+  const getItemColor = (name) => {
+    const n = name.toLowerCase();
+    for (const key of Object.keys(ICON_COLORS)) {
+      if (n.includes(key)) return ICON_COLORS[key];
+    }
+    return undefined;
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -109,7 +136,7 @@ const About = () => {
                       whileHover={{ scale: 1.05, backgroundColor: "var(--color-brand)", color: "var(--color-surface)" }}
                       className="flex items-center gap-2 text-sm border border-brand/10 px-3 py-1 rounded-sm text-muted transition-colors cursor-default"
                     >
-                      <item.icon className="w-3 h-3" />
+                      <item.icon className="w-3 h-3" style={{ color: getItemColor(item.name) }} />
                       {item.name}
                     </motion.li>
                   ))}

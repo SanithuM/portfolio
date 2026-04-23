@@ -4,7 +4,7 @@ export const projects = [
         title: "UniVerse",
         description: "Full-stack academic management system",
         tags: ["MERN", "Tailwind CSS", "Vite"],
-        image: "https://via.placeholder.com/800x450",
+        image: "src/assets/universe.png",
         link: "https://github.com/SanithuM/universe",
     },
     {
@@ -12,7 +12,7 @@ export const projects = [
     title: "Laced",
     description: "A high-performance e-commerce platform built for speed.",
     tags: ["FastAPI", "React", "PostgreSQL"],
-    image: "https://via.placeholder.com/800x450",
+    image: "src/assets/laced.jpg",
     link: "https://github.com/yourusername/laced",
   },
 ];

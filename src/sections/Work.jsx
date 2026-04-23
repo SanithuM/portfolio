@@ -17,6 +17,24 @@ const getTagIcon = (tag) => {
   return Code2; // fallback
 };
 
+const TAG_COLORS = {
+  react: '#61DAFB',
+  tailwind: '#06B6D4',
+  vite: '#646CFF',
+  fastapi: '#009688',
+  postgres: '#336791',
+  mern: '#47A248',
+  mongodb: '#47A248',
+};
+
+const getTagColor = (tag) => {
+  const t = tag.toLowerCase();
+  for (const key of Object.keys(TAG_COLORS)) {
+    if (t.includes(key)) return TAG_COLORS[key];
+  }
+  return undefined;
+};
+
 const Work = () => {
   return (
     <section id="work" className="py-24 border-t border-brand/5">
@@ -65,7 +83,7 @@ const Work = () => {
                   const Icon = getTagIcon(tag);
                   return (
                     <span key={tag} className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider px-2 py-1 bg-brand/5 text-muted hover:bg-brand hover:text-surface transition-colors cursor-default">
-                      <Icon className="w-3 h-3" />
+                      <Icon className="w-3 h-3" style={{ color: getTagColor(tag) }} />
                       {tag}
                     </span>
                   );

@@ -1,16 +1,33 @@
-# React + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Status: In development](https://img.shields.io/badge/Status-In%20development-yellow)
+![React](https://img.shields.io/badge/React-18-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-cyan)
+![Vite](https://img.shields.io/badge/Vite-Fast-yellow)
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This is a personal portfolio website built with React and Vite. It showcases projects, skills, and contact information. The site is currently under active development — expect layout refinements, accessibility improvements, and additional project pages.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Responsive single-page layout with sections: Hero, About, Work, Contact
+- Project cards generated from local data (`src/data/projects.js`)
+- Custom components: Navbar, Section, ProjectCard, Footer, CustomCursor
+- Lightweight, fast development setup using Vite
 
-## Expanding the ESLint configuration
+## Tech stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- CSS (plain) for styling
+
+Project structure (high level)
+
+- `src/` — application source
+- `src/components/` — reusable UI components
+- `src/sections/` — page sections (Hero, About, Work, Contact)
+- `src/data/projects.js` — project data used by `ProjectCard`
+
+
+
