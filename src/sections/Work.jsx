@@ -126,18 +126,18 @@ const Work = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-              className="min-w-full flex-shrink-0 snap-center"
+              className="min-w-full shrink-0 snap-center"
             >
               <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center px-4">
 
                 {/* Project Image - Takes up 6 columns */}
-                <div className="md:col-span-6 overflow-hidden bg-muted/5 aspect-video flex items-center justify-center relative rounded-md border border-gray-200">
+                <div className="md:col-span-6 bg-muted/5 aspect-video flex items-center justify-center relative rounded-md border border-gray-200">
                   <motion.img
                     src={project.image}
                     alt={project.title}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full h-full object-cover transition-all duration-700"
+                    className="w-full h-full object-contain object-center transition-all duration-700"
                   />
                 </div>
 
@@ -165,7 +165,7 @@ const Work = () => {
                     >
                       View Case Study
                       <ArrowUpRight className="w-4 h-4 opacity-0 -ml-2 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all duration-300" />
-                      <span className="absolute -bottom-1 left-0 w-4 h-[1px] bg-brand group-hover/link:w-full group-hover/link:bg-muted transition-all duration-300"></span>
+                      <span className="absolute -bottom-1 left-0 w-4 h-px bg-brand group-hover/link:w-full group-hover/link:bg-muted transition-all duration-300"></span>
                     </a>
                   </div>
                 </div>

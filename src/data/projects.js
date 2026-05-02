@@ -1,3 +1,5 @@
+import { image } from "framer-motion/client";
+
 export const projects = [
     {
         id: 1,
@@ -15,4 +17,12 @@ export const projects = [
     image: "src/assets/laced.jpg",
     link: "https://github.com/ashen-v2/shoestore-group",
   },
+  {
+    id: 3,
+    title: "Nike Clone",
+    description: "A high quality clone of the Nike website",
+    tags: ["React", "Tailwind CSS"],
+    image: "src/assets/nike.jpg",
+    link: "https://github.com/SanithuM/nike-clone"
+  }
 ];

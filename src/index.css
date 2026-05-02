@@ -28,6 +28,20 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide scrollbars globally but keeping scrolling functionality */
+/* Chrome, Safari and Opera */
+body::-webkit-scrollbar { display: none; }
+
+/* IE and Edge */
+body { -ms-overflow-style: none; }
+
+/* Firefox */
+body { scrollbar-width: none; }
+
+/* Also hidden on all scrollable elements */
+*::-webkit-scrollbar { display: none; }
+* { -ms-overflow-style: none; scrollbar-width: none; }
+
 
 /* Gradient blob animations for subtle background accents */
 .bg-blob-animation {
@@ -49,7 +63,7 @@ html {
   pointer-events: none;
 }
 
-/* Additional, slower blob animations */
+/* slower blob animations */
 .bg-blob-animation-slow {
   animation: blob-slow 18s ease-in-out 1s infinite;
   pointer-events: none;
