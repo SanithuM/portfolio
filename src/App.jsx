@@ -9,7 +9,7 @@ import Contact from './sections/Contact';
 function App() {
   return (
     <>
-      <div className="relative overflow-x-hidden">
+      <div className="relative overflow-x-clip">
         {/* Subtle background gradient blobs */}
         <div className="absolute -z-10 top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/3 w-96 h-96 rounded-full opacity-28 blur-3xl bg-gradient-to-tr from-indigo-400 via-purple-400 to-pink-400 bg-blob-animation"></div>
         <div className="absolute -z-10 right-0 bottom-0 transform translate-x-1/4 translate-y-1/4 w-80 h-80 rounded-full opacity-22 blur-3xl bg-gradient-to-r from-rose-300 via-orange-300 to-yellow-200 bg-blob-animation-delayed"></div>
