@@ -9,6 +9,11 @@
 
 This is a personal portfolio website built with React and Vite. It showcases projects, skills, and contact information. The site is currently under active development — expect layout refinements, accessibility improvements, and additional project pages.
 
+## 🌐 Deployment
+
+[![Website Live](https://img.shields.io/badge/Live_Demo-Click_Here-blue?style=for-the-badge&logo=render)](https://SanithuM.github.io/portfolio/)
+
+
 ## Features
 
 - Responsive single-page layout with sections: Hero, About, Work, Contact
