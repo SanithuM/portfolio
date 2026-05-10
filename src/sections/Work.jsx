@@ -137,7 +137,7 @@ const Work = () => {
                     alt={project.title}
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full h-full object-contain object-center transition-all duration-700"
+                    className="w-full h-full object-fit object-center transition-all duration-700"
                   />
                 </div>
 

@@ -24,5 +24,13 @@ export const projects = [
     tags: ["React", "Tailwind CSS"],
     image: "src/assets/nike.jpg",
     link: "https://github.com/SanithuM/nike-clone"
+  },
+  {
+    id: 4,
+    title: "DC Reimagined",
+    description: "A DC Comics fan site with character profiles and news updates.",
+    tags: ["React", "Tailwind CSS"],
+    image: "src/assets/dc_reimagined.jpg",
+    link: "https://github.com/SanithuM/dc-reimagined"
   }
 ];

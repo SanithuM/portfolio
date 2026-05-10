@@ -23,14 +23,14 @@ const Hero = () => {
 
   return (
     <section id="hero" className="min-h-[80vh] flex flex-col justify-center pt-20">
-      <motion.div 
+      <motion.div
         className="space-y-6 max-w-3xl"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Subtle Greeting */}
-        <motion.p 
+        <motion.p
           variants={itemVariants}
           className="text-sm uppercase tracking-[0.2em] text-muted font-medium"
         >
@@ -38,35 +38,35 @@ const Hero = () => {
         </motion.p>
 
         {/* Main Headline */}
-        <motion.h1 
+        <motion.h1
           variants={itemVariants}
           className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1]"
         >
-          Building digital products with <span className="text-muted/50 underline decoration-1 underline-offset-8">intent</span> and precision.
+          Engineering <span className="text-muted/50 underline decoration-1 underline-offset-8">performance</span> driven web experiences.
         </motion.h1>
 
         {/* Sub-headline / Context */}
-        <motion.p 
+        <motion.p
           variants={itemVariants}
           className="text-lg md:text-xl text-muted leading-relaxed max-w-2xl"
         >
-          I'm a Full-stack Developer specializing in the MERN stack. 
-          Recently finished my final viva and currently crafting scalable web applications 
-          like <span className="text-brand font-medium">UniVerse</span> and <span className="text-brand font-medium">Laced</span>.
+          I am a Full-stack Developer dedicated to building efficient, maintainable applications across the entire stack.
+          By leveraging modern frameworks and database architectures, I create
+          functional ecosystems that solve real-world problems.
         </motion.p>
-
+        
         {/* CTA Buttons */}
         <motion.div variants={itemVariants} className="flex gap-6 pt-4">
-          <motion.a 
-            href="#work" 
+          <motion.a
+            href="#work"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 bg-brand text-surface text-sm font-bold uppercase tracking-widest hover:opacity-80 transition-opacity"
           >
             View Work
           </motion.a>
-          <motion.a 
-            href="/assets/resume.pdf" 
+          <motion.a
+            href="/assets/resume.pdf"
             target="_blank"
             whileHover={{ scale: 1.05, backgroundColor: "var(--color-brand)", color: "var(--color-surface)" }}
             whileTap={{ scale: 0.95 }}

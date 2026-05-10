@@ -3,7 +3,10 @@ import { User, Code2 } from "lucide-react";
 import { 
   SiReact, SiVite, SiTailwindcss, SiRedux, SiFramer,
   SiNodedotjs, SiExpress, SiFastapi, SiMongodb,
-  SiGit, SiPostman, SiVercel, SiDocker
+  SiGit, SiPostman, SiVercel, SiDocker,
+  SiRender,
+  SiVscodium,
+  SiFigma
 } from "react-icons/si";
 
 const About = () => {
@@ -32,8 +35,8 @@ const About = () => {
       items: [
         { name: "Git", icon: SiGit }, 
         { name: "Postman", icon: SiPostman }, 
-        { name: "Vercel", icon: SiVercel }, 
-        { name: "Docker", icon: SiDocker }
+        { name: "Render", icon: SiRender }, 
+        { name: "Figma", icon: SiFigma }
       ] 
     },
   ];
