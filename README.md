@@ -1,6 +1,6 @@
-# Portfolio
+# ⚡ Portfolio
 
-![Status: In development](https://img.shields.io/badge/Status-In%20development-yellow)
+![Status: Live](https://img.shields.io/badge/Status-Live-green)
 ![React](https://img.shields.io/badge/React-18-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-cyan)
 ![Vite](https://img.shields.io/badge/Vite-Fast-yellow)
