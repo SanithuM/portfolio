@@ -1,6 +1,6 @@
-# Portfolio
+# ⚡ Portfolio
 
-![Status: In development](https://img.shields.io/badge/Status-In%20development-yellow)
+![Status: Live](https://img.shields.io/badge/Status-Live-green)
 ![React](https://img.shields.io/badge/React-18-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-cyan)
 ![Vite](https://img.shields.io/badge/Vite-Fast-yellow)
@@ -8,6 +8,11 @@
 ## About
 
 This is a personal portfolio website built with React and Vite. It showcases projects, skills, and contact information. The site is currently under active development — expect layout refinements, accessibility improvements, and additional project pages.
+
+## 🌐 Deployment
+
+[![Website Live](https://img.shields.io/badge/Live_Demo-Click_Here-blue?style=for-the-badge&logo=render)](https://SanithuM.github.io/portfolio/)
+
 
 ## Features
 
