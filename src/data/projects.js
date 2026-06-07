@@ -4,7 +4,7 @@ export const projects = [
         title: "UniVerse",
         description: "Full-stack academic management system",
         tags: ["MongoDB","Express", "React", "Node.js"],
-        image: "./portfolio/public/assets/images/universe.png",
+        image: "portfolio/assets/images/universe.png",
         link: "https://github.com/SanithuM/universe",
     },
     {
@@ -12,7 +12,7 @@ export const projects = [
     title: "Laced",
     description: "A high-performance e-commerce platform built for speed.",
     tags: ["FastAPI", "React", "PostgreSQL"],
-    image: "./portfolio/public/assets/images/laced.jpg",
+    image: "/portfolio/assets/images/laced.jpg",
     link: "https://github.com/ashen-v2/shoestore-group",
   },
   {
@@ -20,7 +20,7 @@ export const projects = [
     title: "Nike Clone",
     description: "A high quality clone of the Nike website",
     tags: ["React", "Tailwind CSS"],
-    image: "./portfolio/public/assets/images/nike.jpg",
+    image: "/portfolio/assets/images/nike.jpg",
     link: "https://github.com/SanithuM/nike-clone"
   },
   {
@@ -28,7 +28,7 @@ export const projects = [
     title: "DC Reimagined",
     description: "A DC Comics fan site with character profiles and news updates.",
     tags: ["React", "Tailwind CSS"],
-    image: "./portfolio/public/assets/images/dc_reimagined.jpg",
+    image: "/portfolio/assets/images/dc_reimagined.jpg",
     link: "https://github.com/SanithuM/dc-reimagined"
   }
 ];
