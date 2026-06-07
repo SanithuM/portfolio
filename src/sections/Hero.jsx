@@ -66,7 +66,7 @@ const Hero = () => {
             View Work
           </motion.a>
           <motion.a
-            href="./portfolio/public/assets/resume.pdf"
+            href="./portfolio/assets/resume.pdf"
             target="_blank"
             whileHover={{ scale: 1.05, backgroundColor: "var(--color-brand)", color: "var(--color-surface)" }}
             whileTap={{ scale: 0.95 }}

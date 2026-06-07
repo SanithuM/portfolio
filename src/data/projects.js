@@ -4,7 +4,7 @@ export const projects = [
         title: "UniVerse",
         description: "Full-stack academic management system",
         tags: ["MongoDB","Express", "React", "Node.js"],
-        image: "portfolio/assets/images/universe.png",
+        image: "/portfolio/assets/images/universe.png",
         link: "https://github.com/SanithuM/universe",
     },
     {
