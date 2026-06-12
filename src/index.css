@@ -1,19 +1,25 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 * { box-sizing: border-box; }
 
 @theme {
-    --color-brand: #000000;
-    --color-surface: #ffffff;
-    --color-muted: #6b7280;
-    --font-sans: 'Inter', 'Geist', sans-serif;
+    --color-brand: #f8fafc;
+    --color-surface: #030712;
+    --color-muted: #94a3b8;
+    --color-accent: #6366f1;
+    --color-accent-hover: #818cf8;
+    --font-sans: 'Plus Jakarta Sans', 'Inter', 'Geist', sans-serif;
+    --font-heading: 'Outfit', sans-serif;
 }
 
 body {
-  @apply bg-surface text-brand antialiased selection:bg-brand selection:text-surface;
-  /* Add subtle noise texture */
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  @apply bg-surface text-brand antialiased selection:bg-accent selection:text-surface;
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
 /* Prevent view-transitions */
@@ -45,44 +51,50 @@ body { scrollbar-width: none; }
 
 /* Gradient blob animations for subtle background accents */
 .bg-blob-animation {
-  animation: blob 12s ease-in-out infinite;
+  animation: blob 25s ease-in-out infinite;
 }
 .bg-blob-animation-delayed {
-  animation: blob 14s ease-in-out 3s infinite;
+  animation: blob-delayed 30s ease-in-out infinite;
+}
+.bg-blob-animation-slow {
+  animation: blob-slow 28s ease-in-out infinite;
+}
+.bg-blob-animation-slower {
+  animation: blob-slower 35s ease-in-out infinite;
+}
+
+.bg-blob-animation,
+.bg-blob-animation-delayed,
+.bg-blob-animation-slow,
+.bg-blob-animation-slower {
+  pointer-events: none;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 @keyframes blob {
-  0% { transform: translateY(0) scale(1); }
-  33% { transform: translateY(-12px) scale(1.05); }
-  66% { transform: translateY(6px) scale(0.98); }
-  100% { transform: translateY(0) scale(1); }
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(40px, -60px) scale(1.1); }
+  66% { transform: translate(-30px, 30px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
 }
 
-/* Ensure gradients don't interfere with pointer events */
-.bg-blob-animation, .bg-blob-animation-delayed {
-  pointer-events: none;
-}
-
-/* slower blob animations */
-.bg-blob-animation-slow {
-  animation: blob-slow 18s ease-in-out 1s infinite;
-  pointer-events: none;
-}
-.bg-blob-animation-slower {
-  animation: blob-slower 22s ease-in-out 2s infinite;
-  pointer-events: none;
+@keyframes blob-delayed {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(-50px, 50px) scale(1.15); }
+  100% { transform: translate(0px, 0px) scale(1); }
 }
 
 @keyframes blob-slow {
-  0% { transform: translateY(0) scale(1); }
-  25% { transform: translateY(-8px) scale(1.03) translateX(-6px); }
-  50% { transform: translateY(6px) scale(0.98) translateX(4px); }
-  75% { transform: translateY(-4px) scale(1.02) translateX(-2px); }
-  100% { transform: translateY(0) scale(1); }
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(-30px, -40px) scale(0.95); }
+  66% { transform: translate(40px, 20px) scale(1.05); }
+  100% { transform: translate(0px, 0px) scale(1); }
 }
 
 @keyframes blob-slower {
-  0% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-10px) scale(1.04) translateX(8px); }
-  100% { transform: translateY(0) scale(1); }
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(60px, -30px) scale(1.1); }
+  100% { transform: translate(0px, 0px) scale(1); }
 }

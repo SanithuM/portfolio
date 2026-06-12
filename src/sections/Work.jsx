@@ -1,11 +1,15 @@
 import { projects } from '../data/projects';
-import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { ArrowUpRight, FolderGit2, Code2, ArrowLeft, ArrowRight } from "lucide-react";
 import { 
   SiReact, SiTailwindcss, SiVite, 
   SiFastapi, SiPostgresql, SiMongodb, 
   SiExpress, SiNodedotjs
 } from "react-icons/si";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const getTagIcon = (tag) => {
   const t = tag.toLowerCase();
@@ -43,6 +47,8 @@ import { useRef } from 'react';
 
 const Work = () => {
   const scrollRef = useRef(null);
+  const containerRef = useRef(null);
+
   const scroll = (dir = 1) => {
     const container = scrollRef.current;
     if (!container) return;
@@ -78,66 +84,82 @@ const Work = () => {
     container.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
   };
 
+  useGSAP(() => {
+    // Animate Header
+    gsap.from(".work-header", {
+      y: 20,
+      opacity: 0,
+      duration: 0.6,
+      scrollTrigger: {
+        trigger: ".work-header",
+        start: "top 90%",
+        toggleActions: "play none none none"
+      }
+    });
+
+    // Animate Project Cards when container enters view
+    gsap.from(".project-card", {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: ".projects-container",
+        start: "top 85%",
+        toggleActions: "play none none none"
+      }
+    });
+  }, { scope: containerRef });
+
   return (
-    <section id="work" className="py-24 border-t border-brand/5">
+    <section ref={containerRef} id="work" className="py-24 border-t border-brand/5">
       {/* Section Header */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        className="mb-8"
-      >
+      <div className="work-header mb-8">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-sm uppercase tracking-[0.3em] text-muted font-bold flex items-center gap-2">
             <FolderGit2 className="w-4 h-4" />
             Projects
           </h2>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <button
               type="button"
               aria-label="Previous project"
               onClick={() => scroll(-1)}
-              className="p-2 rounded-full bg-black hover:opacity-90 transition-colors cursor-pointer z-30"
+              className="p-2.5 rounded-full bg-brand/5 hover:bg-accent border border-brand/10 hover:border-accent text-brand hover:text-white transition-all duration-300 cursor-pointer z-30 shadow-md"
             >
-              <ArrowLeft className="w-5 h-5 text-white" />
+              <ArrowLeft className="w-5 h-5" />
             </button>
 
             <button
               type="button"
               aria-label="Next project"
               onClick={() => scroll(1)}
-              className="p-2 rounded-full bg-black hover:opacity-90 transition-colors cursor-pointer z-30"
+              className="p-2.5 rounded-full bg-brand/5 hover:bg-accent border border-brand/10 hover:border-accent text-brand hover:text-white transition-all duration-300 cursor-pointer z-30 shadow-md"
             >
-              <ArrowRight className="w-5 h-5 text-white" />
+              <ArrowRight className="w-5 h-5" />
             </button>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Projects List - horizontal carousel */}
-      <div className="relative">
+      <div className="projects-container relative">
         <div ref={scrollRef} className="flex gap-8 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth py-4 px-4 md:px-0">
-          {projects.map((project, index) => (
-            <motion.div
+          {projects.map((project) => (
+            <div
               key={project.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-              className="min-w-full shrink-0 snap-center"
+              className="project-card min-w-full shrink-0 snap-center"
             >
               <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center px-4">
 
                 {/* Project Image - Takes up 6 columns */}
-                <div className="md:col-span-6 bg-muted/5 aspect-video flex items-center justify-center relative rounded-md border border-gray-200">
-                  <motion.img
+                <div className="md:col-span-6 bg-brand/5 aspect-video flex items-center justify-center relative rounded-md border border-brand/10 overflow-hidden shadow-lg shadow-indigo-500/2">
+                  <img
                     src={project.image}
                     alt={project.title}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full h-full object-fit object-center transition-all duration-700"
+                    className="w-full h-full object-fit object-center transition-all duration-700 hover:scale-[1.03]"
                   />
                 </div>
 
@@ -147,7 +169,7 @@ const Work = () => {
                     {project.tags.map(tag => {
                       const Icon = getTagIcon(tag);
                       return (
-                        <span key={tag} className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider px-2 py-1 bg-brand/5 text-muted hover:bg-brand hover:text-surface transition-colors cursor-default">
+                        <span key={tag} className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider px-2 py-1 bg-brand/5 text-muted hover:bg-accent/10 hover:text-accent border border-brand/5 hover:border-accent/20 rounded-xs transition-all duration-300 cursor-default">
                           <Icon className="w-3 h-3" style={{ color: getTagColor(tag) }} />
                           {tag}
                         </span>
@@ -161,17 +183,17 @@ const Work = () => {
                   <div className="pt-4">
                     <a
                       href={project.link}
-                      className="text-sm font-bold uppercase tracking-widest relative inline-flex items-center gap-1 group/link hover:text-muted transition-colors"
+                      className="text-sm font-bold uppercase tracking-widest relative inline-flex items-center gap-1 group/link hover:text-accent transition-colors duration-300"
                     >
                       View Case Study
-                      <ArrowUpRight className="w-4 h-4 opacity-0 -ml-2 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all duration-300" />
-                      <span className="absolute -bottom-1 left-0 w-4 h-px bg-brand group-hover/link:w-full group-hover/link:bg-muted transition-all duration-300"></span>
+                      <ArrowUpRight className="w-4 h-4 opacity-0 -ml-2 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all duration-300 text-accent" />
+                      <span className="absolute -bottom-1 left-0 w-4 h-px bg-brand group-hover/link:w-full group-hover/link:bg-accent transition-all duration-300"></span>
                     </a>
                   </div>
                 </div>
 
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

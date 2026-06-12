@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const navRef = useRef(null);
 
-    // Adds a slight background shadow/blur when scrolling down
+    // A slight background shadow/blur when scrolling down
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
@@ -13,6 +15,15 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    useGSAP(() => {
+        gsap.from(navRef.current, {
+            y: -100,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power4.out"
+        });
+    }, { scope: navRef });
+
     const navLinks = [
         { name: "Work", href: "#work" },
         { name: "About", href: "#about" },
@@ -20,19 +31,17 @@ const Navbar = () => {
     ];
 
     return (
-        <motion.nav 
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        <nav 
+            ref={navRef}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-                isScrolled ? 'bg-surface/80 backdrop-blur-xl border-b border-brand/5 py-4' : 'bg-transparent py-8'
+                isScrolled ? 'bg-surface/60 backdrop-blur-xl border-b border-brand/10 py-4 shadow-lg shadow-indigo-500/5' : 'bg-transparent py-8'
             }`}
         >
             <div className="max-w-5xl mx-auto px-6 flex justify-between items-center">
                 {/* Logo or Name */}
                 <a
                     href="#"
-                    className="text-lg font-bold tracking-tighter hover:opacity-50 transition-opacity"
+                    className="text-lg font-bold tracking-tighter bg-white bg-clip-text text-transparent hover:brightness-110 transition-all duration-300"
                 >
                     S. MALHIRU
                 </a>
@@ -43,24 +52,24 @@ const Navbar = () => {
                         <a
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-medium text-muted hover:text-brand transition-colors uppercase tracking-widest relative group"
+                            className="text-sm font-medium text-muted hover:text-accent transition-colors uppercase tracking-widest relative group"
                         >
                             {link.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand transition-all duration-300 group-hover:w-full"></span>
+                            <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full"></span>
                         </a>
                     ))}
 
                     {/* Status Indicator */}
                     <div className="hidden md:flex items-center gap-2 pl-4 border-l border-brand/10">
                         <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-40 duration-1000"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60 duration-1000"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]"></span>
                         </span>
                         <span className="text-[10px] uppercase tracking-widest text-muted font-medium">Available</span>
                     </div>
                 </div>
             </div>
-        </motion.nav>
+        </nav>
     );
 };
 

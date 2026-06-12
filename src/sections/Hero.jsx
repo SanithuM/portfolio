@@ -1,81 +1,67 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Hero = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3,
-      },
-    },
-  };
+  const containerRef = useRef(null);
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-    },
-  };
+  useGSAP(() => {
+    gsap.from(".hero-item", {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: "power4.out",
+      delay: 0.3
+    });
+  }, { scope: containerRef });
 
   return (
     <section id="hero" className="min-h-[80vh] flex flex-col justify-center pt-20">
-      <motion.div
+      <div
+        ref={containerRef}
         className="space-y-6 max-w-3xl"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
       >
         {/* Subtle Greeting */}
-        <motion.p
-          variants={itemVariants}
-          className="text-sm uppercase tracking-[0.2em] text-muted font-medium"
+        <p
+          className="hero-item text-sm uppercase tracking-[0.2em] text-muted font-medium"
         >
           Based in Sri Lanka
-        </motion.p>
+        </p>
 
         {/* Main Headline */}
-        <motion.h1
-          variants={itemVariants}
-          className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1]"
+        <h1
+          className="hero-item text-5xl md:text-7xl font-extrabold tracking-tighter leading-[1.1]"
         >
-          Engineering <span className="text-muted/50 underline decoration-1 underline-offset-8">performance</span> driven web experiences.
-        </motion.h1>
+          Engineering <span className="bg-linear-to-r from-indigo-500 via-purple-500 to-pink-300 bg-clip-text text-transparent underline decoration-indigo-500/30 underline-offset-8 tracking-normal">performance</span> driven web experiences.
+        </h1>
 
         {/* Sub-headline / Context */}
-        <motion.p
-          variants={itemVariants}
-          className="text-lg md:text-xl text-muted leading-relaxed max-w-2xl"
+        <p
+          className="hero-item text-lg md:text-xl text-muted leading-relaxed max-w-2xl"
         >
           I am a Full-stack Developer dedicated to building efficient, maintainable applications across the entire stack.
           By leveraging modern frameworks and database architectures, I create
           functional ecosystems that solve real-world problems.
-        </motion.p>
+        </p>
         
         {/* CTA Buttons */}
-        <motion.div variants={itemVariants} className="flex gap-6 pt-4">
-          <motion.a
+        <div className="hero-item flex gap-6 pt-4">
+          <a
             href="#work"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-brand text-surface text-sm font-bold uppercase tracking-widest hover:opacity-80 transition-opacity"
+            className="px-8 py-3 bg-brand text-surface text-sm font-bold uppercase tracking-widest hover:bg-accent hover:text-white active:scale-95 transition-all duration-300 rounded-sm shadow-lg shadow-indigo-500/10"
           >
             View Work
-          </motion.a>
-          <motion.a
+          </a>
+          <a
             href="./portfolio/assets/resume.pdf"
             target="_blank"
-            whileHover={{ scale: 1.05, backgroundColor: "var(--color-brand)", color: "var(--color-surface)" }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 border border-brand/20 text-sm font-bold uppercase tracking-widest transition-colors"
+            className="px-8 py-3 border border-brand/20 text-sm font-bold uppercase tracking-widest hover:bg-accent hover:border-accent hover:text-white active:scale-95 transition-all duration-300 rounded-sm"
           >
             Resume
-          </motion.a>
-        </motion.div>
-      </motion.div>
+          </a>
+        </div>
+      </div>
     </section>
   );
 };
